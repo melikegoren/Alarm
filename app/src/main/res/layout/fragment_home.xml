@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.home.HomeFragment">
+
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/fallingsky"
+            android:gravity="center_horizontal|center_vertical"
+            app:layout_constraintEnd_toStartOf="@id/cb_tue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/mon"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_mon"
+            app:layout_constraintStart_toStartOf="@+id/cb_mon"
+            app:layout_constraintTop_toBottomOf="@id/cb_mon" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:foregroundGravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/cb_mon"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker"
+            app:layout_constraintEnd_toStartOf="@id/cb_wed"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/tue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_tue"
+            app:layout_constraintStart_toStartOf="@+id/cb_tue"
+            app:layout_constraintTop_toBottomOf="@id/cb_tue" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/cb_tue"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker"
+            app:layout_constraintEnd_toStartOf="@id/cb_thu"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/wed"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_wed"
+            app:layout_constraintStart_toStartOf="@+id/cb_wed"
+            app:layout_constraintTop_toBottomOf="@id/cb_wed" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_thu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/cb_wed"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker"
+            app:layout_constraintEnd_toStartOf="@id/cb_fri"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_thu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/thu"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_thu"
+            app:layout_constraintStart_toStartOf="@+id/cb_thu"
+            app:layout_constraintTop_toBottomOf="@id/cb_thu" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/cb_thu"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker"
+            app:layout_constraintEnd_toStartOf="@id/cb_sat"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/fri"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_fri"
+            app:layout_constraintStart_toStartOf="@+id/cb_fri"
+            app:layout_constraintTop_toBottomOf="@id/cb_fri" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/cb_fri"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker"
+            app:layout_constraintEnd_toStartOf="@id/cb_sun"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/sat"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_sat"
+            app:layout_constraintStart_toStartOf="@+id/cb_sat"
+            app:layout_constraintTop_toBottomOf="@id/cb_sat" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:fontFamily="@font/fallingsky"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cb_sat"
+            app:layout_constraintTop_toBottomOf="@+id/time_picker" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="@string/sun"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cb_sun"
+            app:layout_constraintStart_toStartOf="@+id/cb_sun"
+            app:layout_constraintTop_toBottomOf="@id/cb_sun" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/day_button_bg"
+            android:elevation="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_34sdp"
+            android:text="Save"
+
+            android:textColor="@color/white"
+            android:fontFamily="@font/fallingsky"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cb_thu" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_alarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_save"
+            android:text="My Alarms"
+            android:textSize="@dimen/_24ssp"
+            android:fontFamily="@font/fallingsky"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_16sdp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_alarms"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:padding="@dimen/_5sdp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_alarms"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fallingsky"
+            android:text="App needs permission to post notification!"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_alarms"            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_14sdp"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_alarms"
+            app:layout_constraintBottom_toBottomOf="@id/rv_alarms"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_no_alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There is no alarm!"
+            android:fontFamily="@font/fallingsky"
+            android:textSize="@dimen/_18ssp"
+            android:visibility="invisible"
+            android:layout_marginBottom="@dimen/_30sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_alarms"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</ScrollView>
