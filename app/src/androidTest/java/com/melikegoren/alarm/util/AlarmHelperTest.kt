@@ -30,7 +30,6 @@ class AlarmHelperTest {
     @Before
     fun setup() {
         mockContext = InstrumentationRegistry.getInstrumentation().targetContext
-
         alarmHelper = AlarmHelper(mockAlarmManager, getPendingIntent())
     }
 

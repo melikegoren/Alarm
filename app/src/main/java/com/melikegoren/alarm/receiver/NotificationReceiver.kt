@@ -1,11 +1,18 @@
 package com.melikegoren.alarm.receiver
 
+import android.app.Notification.MediaStyle
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
+import android.media.AudioManager.RINGER_MODE_NORMAL
+import android.media.AudioManager.STREAM_ALARM
+import android.media.AudioManager.STREAM_MUSIC
+import android.media.Ringtone
 import android.media.RingtoneManager
+import android.media.SoundPool
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.melikegoren.alarm.R
@@ -42,9 +49,9 @@ class NotificationReceiver : BroadcastReceiver() {
                 .setContentTitle("Alarm")
                 .setContentText("Here\'s your alarm!")
                 .setAutoCancel(true)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setOngoing(true)
+                .setSound(RingtoneManager.getDefaultUri(AudioManager.STREAM_VOICE_CALL))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setVibrate(longArrayOf(1000L))
 
             // Generate an Id for each notification
             val id = System.currentTimeMillis() / 1000

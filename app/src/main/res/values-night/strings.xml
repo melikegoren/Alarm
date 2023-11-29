@@ -14,4 +14,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
+    <string name="my_alarms">My Alarms</string>
+    <string name="save">Save</string>
+    <string name="there_is_no_alarm">There is no alarm!</string>
+    <string name="app_needs_permission_to_post_notification">App needs permission to post notification!</string>
 </resources>

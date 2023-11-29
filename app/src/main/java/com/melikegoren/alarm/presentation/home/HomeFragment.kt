@@ -102,13 +102,18 @@ class HomeFragment : Fragment(), OnHomeClickListener {
                 binding.btnSave.isEnabled = true
                 val days = it
                 binding.btnSave.setOnClickListener {
-                    val hour = binding.timePicker.hour
-                    val minute = binding.timePicker.minute
+                    var hour = binding.timePicker.hour.toString()
+                    var minute = binding.timePicker.minute.toString()
+
+                    if(minute.length == 1 || hour.length == 1){
+                        hour = ("0$hour")
+                        minute = ("0$minute")
+                    }
 
                     val alarmEntity =
-                        AlarmEntity(hour = hour.toString(), minute = minute.toString(), days = days)
+                        AlarmEntity(hour = hour, minute = minute, days = days)
 
-                    val timeInMilli = convertTimeToMilliseconds(hour, minute)
+                    val timeInMilli = convertTimeToMilliseconds(hour.toInt(), minute.toInt())
                     alarmHelper.setAlarm(requireContext(), timeInMilli, days)
 
                     viewModel.addAlarm(alarmEntity)
@@ -209,6 +214,8 @@ class HomeFragment : Fragment(), OnHomeClickListener {
         }
 
     }
+
+
 
 
     override fun onDestroy() {
