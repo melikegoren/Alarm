@@ -40,14 +40,18 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
 
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
     val nav_version = "2.7.5"
     val lifecycle_version = "2.6.2"
-    val arch_version = "2.2.0"
     val room_version = "2.6.0"
 
 
@@ -56,6 +60,8 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
@@ -95,7 +101,7 @@ dependencies {
 
 
     //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     //intuit
     implementation("com.intuit.sdp:sdp-android:1.1.0")
@@ -114,6 +120,16 @@ dependencies {
 
     // Espresso for UI Testing
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
+
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    testImplementation ("com.google.truth:truth:1.1.4")
+    testImplementation ("io.mockk:mockk:1.12.4")
+
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@ import com.melikegoren.alarm.domain.repository.AlarmRepository
 import com.melikegoren.alarm.presentation.home.HomeUiState
 import com.melikegoren.alarm.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,11 +20,14 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _alarmList = MutableLiveData<HomeUiState<List<AlarmModel>>>()
-    val alarmList: LiveData<HomeUiState<List<AlarmModel>>> get() = _alarmList
+    val alarmList: LiveData<HomeUiState<List<AlarmModel>>> = _alarmList
 
 
     private val _daysToAdd = MutableLiveData<List<String>>()
     val daysToAdd: LiveData<List<String>> get() = _daysToAdd
+
+    private val _isWarningVisible = MutableLiveData<Boolean>()
+    val isWarningVisible: LiveData<Boolean> get() = _isWarningVisible
 
 
     init {
@@ -45,13 +48,12 @@ class HomeViewModel @Inject constructor(
 
     fun getAllAlarms() {
         viewModelScope.launch {
-            alarmRepository.getAllAlarms().collectLatest {
+            alarmRepository.getAllAlarms().collect {
                 when (it) {
-                    is Resource.Loading -> _alarmList.value = HomeUiState.Loading
-                    is Resource.Error -> _alarmList.value =
-                        HomeUiState.Error(it.exception.toString())
+                    is Resource.Loading -> _alarmList.postValue(HomeUiState.Loading)
+                    is Resource.Error -> _alarmList.postValue( HomeUiState.Error(it.exception.toString()))
 
-                    is Resource.Success -> _alarmList.value = HomeUiState.Success(it.result!!)
+                    is Resource.Success -> _alarmList.postValue(HomeUiState.Success(it.result!!))
 
                 }
             }
@@ -59,16 +61,20 @@ class HomeViewModel @Inject constructor(
     }
 
     fun addAlarm(alarmEntity: AlarmEntity) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             alarmRepository.insertAlarm(alarmEntity)
         }
-
     }
 
     fun deleteAlarm(alarmEntity: AlarmEntity) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             alarmRepository.deleteAlarm(alarmEntity)
         }
+    }
+
+    fun isWarningVisible(condition: Boolean){
+            _isWarningVisible.value = !condition
+
     }
 
 }

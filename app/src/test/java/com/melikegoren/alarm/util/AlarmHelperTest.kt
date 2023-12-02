@@ -4,7 +4,6 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import androidx.test.platform.app.InstrumentationRegistry
 import com.melikegoren.alarm.receiver.NotificationReceiver
 import org.junit.Before
 import org.junit.Test
@@ -29,7 +28,7 @@ class AlarmHelperTest {
 
     @Before
     fun setup() {
-        mockContext = InstrumentationRegistry.getInstrumentation().targetContext
+        mockContext = mock<Context>() //This gets the application context of the app being tested
         alarmHelper = AlarmHelper(mockAlarmManager, getPendingIntent())
     }
 
@@ -38,11 +37,12 @@ class AlarmHelperTest {
         return PendingIntent.getBroadcast(mockContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
     }
 
+
     @Test
     fun setAlarm_shouldSetAlarmIfCurrentTimeIsBeforeGivenTimeAndSelectedDay() {
         // Arrange
         val currentTime = System.currentTimeMillis()
-        val futureTime = currentTime + 50000 // 10 seconds in the future
+        val futureTime = currentTime + 20000 // 20 seconds in the future
         val selectedDays = listOf(getCurrentDayOfWeek())
 
         // Act
@@ -60,13 +60,14 @@ class AlarmHelperTest {
     fun setAlarm_shouldNotSetAlarmIfCurrentTimeIsAfterGivenTime(){
         // Arrange
         val currentTime = System.currentTimeMillis()
-        val pastTime = currentTime - 10000 // 10 seconds in the past
+        val pastTime = currentTime - 20000 // 10 seconds in the past
         val selectedDays = listOf(getCurrentDayOfWeek())
 
         // Act
         alarmHelper.setAlarm(mockContext, pastTime, selectedDays)
 
         // Assert
+        //set function shouldn't be called if it's called test will fail
         verify(mockAlarmManager, never()).set(
             anyInt(),
             anyLong(),

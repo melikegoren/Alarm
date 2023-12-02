@@ -3,11 +3,11 @@ package com.melikegoren.alarm.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 import com.melikegoren.alarm.domain.repository.AlarmRepository
 import com.melikegoren.alarm.util.AlarmHelper
 import com.melikegoren.alarm.util.Resource
 import com.melikegoren.alarm.util.convertTimeToMilliseconds
+import com.melikegoren.alarm.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,8 +29,7 @@ class BootCompleteReceiver : BroadcastReceiver() {
                     when (it) {
                         is Resource.Loading -> {}
                         is Resource.Error -> {
-                            Toast.makeText(context, "Error collecting alarms.", Toast.LENGTH_SHORT)
-                                .show()
+                            context!!.showToast("Error collecting alarms.")
                         }
                         is Resource.Success -> {
 
@@ -42,7 +41,6 @@ class BootCompleteReceiver : BroadcastReceiver() {
                             }
                         }
 
-                        else -> {}
                     }
                 }
             }
