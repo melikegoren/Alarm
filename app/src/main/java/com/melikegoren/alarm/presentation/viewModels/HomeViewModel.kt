@@ -4,19 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.melikegoren.alarm.di.IoDispatcher
 import com.melikegoren.alarm.domain.entity.AlarmEntity
 import com.melikegoren.alarm.domain.model.AlarmModel
 import com.melikegoren.alarm.domain.repository.AlarmRepository
 import com.melikegoren.alarm.presentation.home.HomeUiState
 import com.melikegoren.alarm.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val alarmRepository: AlarmRepository
+    private val alarmRepository: AlarmRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private var _alarmList = MutableLiveData<HomeUiState<List<AlarmModel>>>()
@@ -61,20 +63,19 @@ class HomeViewModel @Inject constructor(
     }
 
     fun addAlarm(alarmEntity: AlarmEntity) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             alarmRepository.insertAlarm(alarmEntity)
         }
     }
 
     fun deleteAlarm(alarmEntity: AlarmEntity) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             alarmRepository.deleteAlarm(alarmEntity)
         }
     }
 
     fun isWarningVisible(condition: Boolean){
             _isWarningVisible.value = !condition
-
     }
 
 }

@@ -7,6 +7,7 @@ import com.melikegoren.alarm.presentation.home.HomeUiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -14,9 +15,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.doNothing
 import org.mockito.Mockito.verify
-import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -25,10 +24,14 @@ class HomeViewModelTest{
     @Mock
     private lateinit var repository: AlarmRepository
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val ioDispatcher = UnconfinedTestDispatcher()
+
     lateinit var viewModel: HomeViewModel
 
     private val testDispatcher = StandardTestDispatcher()
     private val testScope = TestScope(testDispatcher)
+
 
 
     @ExperimentalCoroutinesApi
@@ -41,8 +44,7 @@ class HomeViewModelTest{
 
     @Before
     fun setup(){
-        MockitoAnnotations.initMocks(this)
-        viewModel = HomeViewModel(repository)
+        viewModel = HomeViewModel(repository,ioDispatcher)
     }
 
 
