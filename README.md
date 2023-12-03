@@ -12,6 +12,7 @@ An app that sends notification at the times which user saved to database.
 - Mockito
 - JUnit
 
+More tests will be added
   
  Permission Request | Setting Alarm |  Notification Received |
 -------------------------  | --------------------- |  ---------------------|
